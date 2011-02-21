@@ -1,0 +1,21 @@
+<h2>Listing tags</h2>
+
+<table>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td><%= link_to 'Show', tag %></td>
+        <% if admin_signed_in? %>
+    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if admin_signed_in? %>
+    <%= link_to 'New Tag', new_tag_path %>|
+<% end %>
+<%= link_to 'Home', posts_path %>

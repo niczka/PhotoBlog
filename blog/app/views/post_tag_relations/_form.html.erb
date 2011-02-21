@@ -1,0 +1,25 @@
+<%= form_for(@post_tag_relation) do |f| %>
+  <% if @post_tag_relation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post_tag_relation.errors.count, "error") %> prohibited this post_tag_relation from being saved:</h2>
+
+      <ul>
+      <% @post_tag_relation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tag %><br />
+    <%= f.text_field :tag %>
+  </div>
+  <div class="field">
+    <%= f.label :post %><br />
+    <%= f.text_field :post %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

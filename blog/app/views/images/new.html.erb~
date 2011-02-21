@@ -1,0 +1,11 @@
+<h1>New image</h1>
+
+<%= render 'form' %>
+
+
+
+<% form_for :image, @image, :url => images_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :file %>
+<% end %>
+
+<%= link_to 'Back', images_path %>

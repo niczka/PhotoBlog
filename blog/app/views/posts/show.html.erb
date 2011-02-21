@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+    <h2><%= @post.title %></h2>
+
+    <p><%= @post.created_at %></p>
+
+    Tags: <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, tag %>
+    <% end %>
+
+    <p>
+    <ul class="gallery clearfix">
+    <%= link_to image_tag(@post.image.url(:medium), :title => @post.title), @post.image.url, {:rel => "prettyPhoto", :title => @post.title} %>
+    </ul>
+    </p>
+
+    <p><%= @post.content %></p>
+    <% if admin_signed_in? %>
+        <%= link_to 'Edit', edit_post_path(@post) %>|
+        <%= link_to 'Destroy', @post, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <h3>
+    <b><%= comment.author %></b> says:
+  </h3>
+ 
+  <p>
+    <%= comment.content %>
+  </p>
+<% end %>
+ 
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :content, :class => "comment"%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', posts_path %>

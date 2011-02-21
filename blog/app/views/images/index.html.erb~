@@ -1,0 +1,15 @@
+<center><h3>click on image to enlarge</h3></center>
+<ul>
+
+<% @tags.each do |tag| %>
+    <% if tag %><h2> <%= tag.name %> </h2><% end %>
+<li class="gallery clearfix">
+            <% tag.posts.each do |post| %>
+
+                    <%= link_to image_tag(post.image.url(:thumb), :title => post.title), post.image.url, {:rel => "prettyPhoto[pp_gal]", :title => post.title} %>
+
+            <% end %>
+</li>
+<% end %>
+
+</ul>

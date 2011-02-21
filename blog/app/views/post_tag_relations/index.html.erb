@@ -1,0 +1,25 @@
+<h1>Listing post_tag_relations</h1>
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Post</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @post_tag_relations.each do |post_tag_relation| %>
+  <tr>
+    <td><%= post_tag_relation.tag %></td>
+    <td><%= post_tag_relation.post %></td>
+    <td><%= link_to 'Show', post_tag_relation %></td>
+    <td><%= link_to 'Edit', edit_post_tag_relation_path(post_tag_relation) %></td>
+    <td><%= link_to 'Destroy', post_tag_relation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Post tag relation', new_post_tag_relation_path %>

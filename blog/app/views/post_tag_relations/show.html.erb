@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @post_tag_relation.tag %>
+</p>
+
+<p>
+  <b>Post:</b>
+  <%= @post_tag_relation.post %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_tag_relation_path(@post_tag_relation) %> |
+<%= link_to 'Back', post_tag_relations_path %>

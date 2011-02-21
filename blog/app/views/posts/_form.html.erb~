@@ -1,0 +1,32 @@
+<% form_for :post, @post, :url => posts_path, :html => { :multipart => true } do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+
+  <% @tags.each do |tag| %>
+    <%= check_box_tag "post[tag_ids][]", tag.id, @post.tags.include?
+    <input  type="checkbox"
+            id="<%=tag.id%>"
+            name="tag_ids[]"
+            value="<%= tag.id %>"
+            <%if @post.tags.include? tag%>checked="checked"<%end%>
+    >
+    <%= tag.name %>
+  <% end %><br />
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

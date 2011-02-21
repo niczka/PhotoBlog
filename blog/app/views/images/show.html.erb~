@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Title:</b>
+  <%= @image.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @image.description %>
+</p>
+
+<p>
+<%= image_tag @image.file.url %>
+<%= image_tag @image.file.url(:medium) %>
+<%= image_tag @image.file.url(:thumb) %>
+<ul class="gallery clearfix">
+<%= link_to image_tag(@image.file.url(:thumb), :title => @image.title), @image.file.url, {:rel => "prettyPhoto", :title => @image.description} %>
+</ul>
+</p>
+<a> A a </a>
+<h> H h </h>
+<h1> H1 h1 </h1>
+<h2> H2 h2 </h2>
+<h3> H3 h3
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>
